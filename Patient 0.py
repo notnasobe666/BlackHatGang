@@ -5,7 +5,6 @@ import sympy as sm
 
 x = "hallo"
 
-print(3+4)
-
+print(3+4+5)
 # stupid
 
