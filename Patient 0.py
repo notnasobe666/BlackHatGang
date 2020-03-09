@@ -5,5 +5,5 @@ import sympy as sm
 
 x = "hej"
 
-print(x)
+print(3+4)
 
