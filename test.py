@@ -48,6 +48,8 @@ print('Optimal utility is: ' + str(u_star))
 
 # Question 2
 
+plt.style.use('grayscale')
+
 # Plot l_star and c_star with w going from 0.5 to 1.5
 # The definitions are defined - the used packages is defined above
 N = 10000
@@ -93,6 +95,10 @@ print('Total tax revenue:'+str(tax_revenue))
 # Question 4
 
 # How does the tax revenue change when e = 0.1? 
+# New epsilon is defined
+e_bar = 0.1
+
+# Same loop is used as above and then the tax revenue is calculated
 
 
 
