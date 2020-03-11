@@ -92,7 +92,8 @@ print('Total tax revenue:'+str(tax_revenue))
 
 # Question 4
 
-# 
+# How does the tax revenue change when e = 0.1? 
+
 
 
 
