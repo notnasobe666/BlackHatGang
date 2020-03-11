@@ -114,7 +114,23 @@ print('New total tax revenue:'+str(tax_revenue_e_new))
 print('The difference in tax revenue is:'+ str(tax_revenue_e_new-tax_revenue))
 
 
+# Question 5
 
+# Optimize the tax 
+
+# Same optimization formula as above
+def tax_optimize(t0,t1,k):
+    tax_opt = optimize.minimize_scalar(tax_revenue,method='bounded',x0=[0.1,0.1,0.1])
+    t0_opt=tax_opt.x
+    t1_opt=tax_opt.x
+    k_opt=tax_opt.x
+    return t0_opt, t1_opt, k_opt
+  
+t0_opt = tax_optimize(t0,t1,k)[0]
+t1_opt = tax_optimize(t0,t1,k)[1]
+k_opt = tax_optimize(t0,t1,k)[2]
+
+print('Optimal t0 is:' + str(t0_opt))
 
 
 
