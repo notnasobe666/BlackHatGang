@@ -90,7 +90,9 @@ plt.show
 tax_revenue = np.sum(t0*w_vec*l_opt + t1*np.max(w_vec*l_opt-k,0))
 print('Total tax revenue:'+str(tax_revenue))
 
-#Question 4
+# Question 4
+
+# 
 
 
 
