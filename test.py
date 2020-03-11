@@ -48,6 +48,8 @@ print('Optimal utility is: ' + str(u_star))
 
 # Question 2
 
+plt.style.use('grayscale')
+
 # Plot l_star and c_star with w going from 0.5 to 1.5
 # The definitions are defined - the used packages is defined above
 N = 10000
@@ -90,7 +92,45 @@ plt.show
 tax_revenue = np.sum(t0*w_vec*l_opt + t1*np.max(w_vec*l_opt-k,0))
 print('Total tax revenue:'+str(tax_revenue))
 
-#Question 4
+# Question 4
+
+# How does the tax revenue change when e = 0.1? 
+# New epsilon is defined
+e_new = 0.1
+l_opt_e_new = np.empty(N)
+
+# Same loop is used as above but only a new labor
+# supply is calculated as consumption isn't included
+# in the tax revenue formula
+for i, w in enumerate(w_vec):
+    optimization = optimzer(w,e_new,v,t0,t1,k,m)
+    l_opt_e_new[i]=optimization[0]
+
+# then the new tax revenue can be calculated
+tax_revenue_e_new = np.sum(t0*w_vec*l_opt_e_new + t1*np.max(w_vec*l_opt_e_new-k,0))
+print('New total tax revenue:'+str(tax_revenue_e_new))
+
+# Thus the difference in tax revenue can be calucalted as
+print('The difference in tax revenue is:'+ str(tax_revenue_e_new-tax_revenue))
+
+
+# Question 5
+
+# Optimize the tax 
+
+# Same optimization formula as above
+def tax_optimize(t0,t1,k):
+    tax_opt = optimize.minimize_scalar(tax_revenue,method='bounded',x0=[0.1,0.1,0.1])
+    t0_opt=tax_opt.x
+    t1_opt=tax_opt.x
+    k_opt=tax_opt.x
+    return t0_opt, t1_opt, k_opt
+  
+t0_opt = tax_optimize(t0,t1,k)[0]
+t1_opt = tax_optimize(t0,t1,k)[1]
+k_opt = tax_optimize(t0,t1,k)[2]
+
+print('Optimal t0 is:' + str(t0_opt))
 
 
 
