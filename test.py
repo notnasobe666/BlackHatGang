@@ -96,9 +96,22 @@ print('Total tax revenue:'+str(tax_revenue))
 
 # How does the tax revenue change when e = 0.1? 
 # New epsilon is defined
-e_bar = 0.1
+e_new = 0.1
+l_opt_e_new = np.empty(N)
 
-# Same loop is used as above and then the tax revenue is calculated
+# Same loop is used as above but only a new labor
+# supply is calculated as consumption isn't included
+# in the tax revenue formula
+for i, w in enumerate(w_vec):
+    optimization = optimzer(w,e_new,v,t0,t1,k,m)
+    l_opt_e_new[i]=optimization[0]
+
+# then the new tax revenue can be calculated
+tax_revenue_e_new = np.sum(t0*w_vec*l_opt_e_new + t1*np.max(w_vec*l_opt_e_new-k,0))
+print('New total tax revenue:'+str(tax_revenue_e_new))
+
+# Thus the difference in tax revenue can be calucalted as
+print('The difference in tax revenue is:'+ str(tax_revenue_e_new-tax_revenue))
 
 
 
