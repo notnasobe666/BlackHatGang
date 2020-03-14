@@ -85,6 +85,7 @@ axis_right.grid(True)
 
 plt.show
 
+
 # Question 3
 
 # Calculate the tax revenue
