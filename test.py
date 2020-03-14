@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 
 # Question 1
 
-
 # First the global variables are defined
 m = 1
 v = 10 # scales the disutility of labor
@@ -127,6 +126,9 @@ def tax_optimize(t0,t1,k):
 t0_opt = tax_optimize(t0,t1,k)
 
 print('Optimal t0 is:' + str(t0_opt))
+
+
+
 
 
 
