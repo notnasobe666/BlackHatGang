@@ -52,8 +52,8 @@ plt.style.use('grayscale')
 
 # Plot l_star and c_star with w going from 0.5 to 1.5
 # The definitions are defined - the used packages is defined above
-N = 10000
-w_vec = np.linspace(0.5,1.5,num=N)
+N = 100
+w_vec = np.random.uniform(0.5,1.5,size=N)
 c_opt = np.empty(N)
 l_opt = np.empty(N)
 
@@ -111,7 +111,7 @@ tax_revenue_e_new = np.sum(t0*w_vec*l_opt_e_new + t1*np.max(w_vec*l_opt_e_new-k,
 print('New total tax revenue:'+str(tax_revenue_e_new))
 
 # Thus the difference in tax revenue can be calucalted as
-print('The difference in tax revenue is:'+ str(tax_revenue_e_new-tax_revenue))
+print('The difference in tax revenue is: '+ str(tax_revenue_e_new-tax_revenue))
 
 
 # Question 5
