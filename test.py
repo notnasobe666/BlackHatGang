@@ -52,7 +52,7 @@ plt.style.use('grayscale')
 
 # Plot l_star and c_star with w going from 0.5 to 1.5
 # The definitions are defined - the used packages is defined above
-N = 100
+N = 10000
 w_vec = np.random.uniform(0.5,1.5,size=N)
 c_opt = np.empty(N)
 l_opt = np.empty(N)
@@ -63,6 +63,7 @@ for i, w in enumerate(w_vec):
     optimization = optimzer(w,e,v,t0,t1,k,m)
     l_opt[i]=optimization[0]
     c_opt[i]=optimization[1]
+
 
 fig = plt.figure(figsize=(10,4))
 
