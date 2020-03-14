@@ -78,22 +78,22 @@ plt.title("Optimal labor supply and consumption")
 plt.show()
 
 # Left plot
-axis_left = fig.add_subplot(1,2,1)
-axis_left.plot(w_vec,l_opt)
-axis_left.set_title('Optimal labor supply given w')
-axis_left.set_xlabel('$w$')
-axis_left.set_ylabel('$l$')
-axis_left.grid(True)
+# axis_left = fig.add_subplot(1,2,1)
+#axis_left.plot(w_vec,l_opt)
+#axis_left.set_title('Optimal labor supply given w')
+#axis_left.set_xlabel('$w$')
+#axis_left.set_ylabel('$l$')
+#axis_left.grid(True)
 
 # Right plot 
-axis_right = fig.add_subplot(1,2,2)
-axis_right.plot(w_vec,c_opt)
-axis_right.set_title('Optimal consumption given w')
-axis_right.set_xlabel('$w1$')
-axis_right.set_ylabel('$c$')
-axis_right.grid(True)
+#axis_right = fig.add_subplot(1,2,2)
+#axis_right.plot(w_vec,c_opt)
+#axis_right.set_title('Optimal consumption given w')
+#axis_right.set_xlabel('$w1$')
+#axis_right.set_ylabel('$c$')
+#axis_right.grid(True)
 
-plt.show
+#plt.show
 
 
 # Question 3
