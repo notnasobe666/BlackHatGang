@@ -2,6 +2,9 @@ import numpy as np
 from scipy import optimize 
 import matplotlib.pyplot as plt 
 
+# autoreload modules when code is run
+%load_ext autoreload
+%autoreload 2
 
 # Question 1
 
@@ -65,7 +68,14 @@ for i, w in enumerate(w_vec):
     c_opt[i]=optimization[1]
 
 
-fig = plt.figure(figsize=(10,4))
+fig = plt.figure(figsize=(10,5))
+plt.plot(w_vec,l_opt)
+plt.plot(w_vec,c_opt)
+plt.grid(True)
+plt.xlabel("w")
+plt.ylabel("c*,l*")
+plt.title("Optimal labor supply and consumption")
+plt.show()
 
 # Left plot
 axis_left = fig.add_subplot(1,2,1)
@@ -92,7 +102,7 @@ plt.show
 
 # tax_revenue = sum(t0*w*l_star+t1 * max(w*l_star-k,0))
 tax_revenue = np.sum(t0*w_vec*l_opt + t1*np.max(w_vec*l_opt-k,0))
-print('Total tax revenue:'+str(tax_revenue))
+print('Total tax revenue: '+str(tax_revenue))
 
 # Question 4
 
@@ -110,7 +120,7 @@ for i, w in enumerate(w_vec):
 
 # then the new tax revenue can be calculated
 tax_revenue_e_new = np.sum(t0*w_vec*l_opt_e_new + t1*np.max(w_vec*l_opt_e_new-k,0))
-print('New total tax revenue:'+str(tax_revenue_e_new))
+print('New total tax revenue: '+str(tax_revenue_e_new))
 
 # Thus the difference in tax revenue can be calucalted as
 print('The difference in tax revenue is: '+ str(tax_revenue_e_new-tax_revenue))
@@ -120,9 +130,10 @@ print('The difference in tax revenue is: '+ str(tax_revenue_e_new-tax_revenue))
 
 # Optimize the tax 
 
+Guess = [0.1,0.1,0.1]
 # Same optimization formula as above
 def tax_optimize(t0,t1,k):
-    tax_opt = optimize.minimize(tax_revenue,method='SLSQP',x0=[0.1,0.1,0.1])
+    tax_opt = optimize.minimize(tax_revenue,Guess,method='SLSQP',bounds=((0,1),(0,1),(0,1)))
     t0_opt=tax_opt.x
     return t0_opt
   
