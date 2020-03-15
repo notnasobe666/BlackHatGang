@@ -85,12 +85,23 @@ def total_tax_revenue(e,v,m,t0,t1,k,N):
         w_i                 = np.random.uniform(low=0.5, high=1.5)
         l_i, _, _           = supply_problem(e,v,m,w_i,t0,t1,k)
         total_tax_revenue   += (t0*w_i*l_i + t1*max(w_i * l_i - k,0))
-        return total_tax_revenue
+    return total_tax_revenue
 
 # Calculate the total tax revenue
 
 T = total_tax_revenue(e, v, m, t0, t1, k, N)
 print(T)
+
+# Question 4
+# Frisch Elasticity changed from 0.3 to 0.1
+e_new = 0.1
+
+T_new = total_tax_revenue(e_new,v,m,t0,t1,k,N)
+print(T_new)
+
+
+# Question 5
+
 
 
 
