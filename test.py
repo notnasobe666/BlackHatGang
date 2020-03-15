@@ -44,7 +44,7 @@ l_star = optimzer(w,e,v,t0,t1,k,m)[0]
 c_star = optimzer(w,e,v,t0,t1,k,m)[1]
 u_star = optimzer(w,e,v,t0,t1,k,m)[2]
 
-print(f'Optimized labour supply is {l_star:.2f}')
+print(f'Optimized labour supply is: {l_star:.2f}')
 print(f'Optimized consumption is:  {c_star:.2f}')
 print(f'Optimal utility is: {u_star:.2f}')
 

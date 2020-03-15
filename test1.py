@@ -53,7 +53,7 @@ print(u_star)
 
 # A vector for w is created
 N       = 10000
-w_vec   = np.random.uniform(0.5, 1.5, size=100)
+w_vec   = np.random.uniform(0.5, 1.5, size=N)
 
 # empty lists for l and c is created
 c_vec = np.empty(N)
