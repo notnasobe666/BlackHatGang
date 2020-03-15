@@ -51,4 +51,28 @@ print(u_star)
 
 # Question 2
 
+# A vector for w is created
+N       = 10000
+w_vec   = np.random.uniform(0.5, 1.5, size=N)
+
+# empty lists for l and c is created
+c_vec = np.empty(N)
+l_vec = np.empty(N)
+
+# a loop is generated to create optimal value of consumption \ 
+# and labor supply given the wage
+
+for i, w in enumerate(w_vec):
+    opt = supply_problem(e,v,m,w_vec[i],t0,t1,k)
+    c_vec[i] = opt[0]
+    l_vec[i] = opt[1]
+
+plt.style.use('grayscale')
+plt.plot(w_vec,l_vec)
+plt.plot(w_vec,c_vec)
+plt.grid(True)
+plt.show()
+
+# Question 3
+
 
