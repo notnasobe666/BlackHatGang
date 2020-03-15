@@ -75,4 +75,20 @@ plt.show()
 
 # Question 3
 
+# A function to return the total tax revenue is created to be \
+# used in following questions
+
+def total_tax_revenue(e,v,m,t0,t1,k,N):
+    total_tax_revenue = 0 
+    np.random.seed(666)
+    for i in range(1,N+1):
+        w_i                 = np.random.uniform(0.5, 1.5)
+        l_i, _, _           = supply_problem(e,v,m,w_i,t0,t1,k)
+        total_tax_revenue   += (t0*w_i*l_i + t1*np.max(w_i*l_i-k,0))
+        return total_tax_revenue
+
+# Calculate the total tax revenue
+
+T = total_tax_revenue(e,v,m,t0,t1,k,N)
+print(T)
 
