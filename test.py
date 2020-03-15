@@ -9,7 +9,6 @@ import math as math
 
 # Question 1
 
-
 # First the global variables are defined
 m = 1
 v = 10 # scales the disutility of labor
@@ -127,4 +126,7 @@ bnds = (b,b,b)
  
 solution = optimize.minimize(tax_levels,x0,method='SLSQP',bounds=bnds)
 print(solution) 
+
+
+
 
