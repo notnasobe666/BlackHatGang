@@ -1,6 +1,7 @@
 import numpy as np 
 from scipy import optimize 
 import matplotlib.pyplot as plt 
+import math as math
 
 # autoreload modules when code is run
 %load_ext autoreload
@@ -56,6 +57,7 @@ plt.style.use('grayscale')
 # Plot l_star and c_star with w going from 0.5 to 1.5
 # The definitions are defined - the used packages is defined above
 N = 10000
+np.random.seed(666)
 w_vec = np.random.uniform(0.5,1.5,size=N)
 c_opt = np.empty(N)
 l_opt = np.empty(N)
@@ -77,23 +79,7 @@ plt.ylabel("c*,l*")
 plt.title("Optimal labor supply and consumption")
 plt.show()
 
-# Left plot
-# axis_left = fig.add_subplot(1,2,1)
-#axis_left.plot(w_vec,l_opt)
-#axis_left.set_title('Optimal labor supply given w')
-#axis_left.set_xlabel('$w$')
-#axis_left.set_ylabel('$l$')
-#axis_left.grid(True)
 
-# Right plot 
-#axis_right = fig.add_subplot(1,2,2)
-#axis_right.plot(w_vec,c_opt)
-#axis_right.set_title('Optimal consumption given w')
-#axis_right.set_xlabel('$w1$')
-#axis_right.set_ylabel('$c$')
-#axis_right.grid(True)
-
-#plt.show
 
 
 # Question 3
@@ -127,23 +113,20 @@ print('The difference in tax revenue is: '+ str(tax_revenue_e_new-tax_revenue))
 
 
 # Question 5
-
 # Optimize the tax 
 
-def optimized_tax_revenue(x):
+def tax_levels(x):
     t_0 = x[0]
     t_1 = x[1]
-    k   = x[2]
-    return -tax_revenue(e,v,m,t0,t1,k,N)
+    k_new  = x[2]
+    tax_optimization = -tax_revenue(w_vec,t0,t1,k)
+    return
 
-Guess = [0.2,0.3,0.4]
-
-solution = optimize.minimize(optimized_tax_revenue,Guess,method='SLSQP',bounds=((0,1),(0,1),(0,1))))
-t0  = solution.x[0]
-t1  = solution.x[1]
-k   = solution.x[2] 
-T   = tax_revenue(e,v,m,t0,t1,k,N)
-
-print(t0)
-
+x0 = [0.1, 0.1, 0.1]
+print(tax_levels(x0))
+b = (0,1)
+bnds = (b,b,b)
+ 
+solution = optimize.minimize(tax_levels,x0,method='SLSQP',bounds=bnds)
+print(solution) 
 
