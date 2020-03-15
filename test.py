@@ -80,8 +80,6 @@ plt.title("Optimal labor supply and consumption")
 plt.show()
 
 
-
-
 # Question 3
 
 # Calculate the tax revenue
@@ -116,15 +114,15 @@ print('The difference in tax revenue is: '+ str(tax_revenue_e_new-tax_revenue))
 # Optimize the tax 
 
 def tax_levels(x):
-    t_0 = x[0]
-    t_1 = x[1]
-    k_new  = x[2]
+    t_0     = x[0]
+    t_1     = x[1]
+    k_new   = x[2]
     tax_optimization = -tax_revenue(w_vec,t0,t1,k)
     return
 
 x0 = [0.1, 0.1, 0.1]
 print(tax_levels(x0))
-b = (0,1)
+b = (0.0,1.0)
 bnds = (b,b,b)
  
 solution = optimize.minimize(tax_levels,x0,method='SLSQP',bounds=bnds)
