@@ -102,6 +102,28 @@ print(T_new)
 
 # Question 5
 
+# Define the negative of total tax revenue
+
+def optimized_tax_revenue(x):
+    t0  = x[0]
+    t1  = x[1]
+    k   = x[2]
+    return -total_tax_revenue(e,v,m,t0,t1,k,N)
+
+
+guess   = [0.1,0.1,0.1]
+tax_solution = optimize.minimize(optimized_tax_revenue,guess,\
+    method='SLSQP',bounds=((0,1),(0,1),(0,1)))
+
+t0      = tax_solution.x[0]
+t1      = tax_solution.x[1]
+k       = tax_solution.x[2]
+T_opt   = total_tax_revenue(e,v,m,t0,t1,k,N)
+
+print(t0)
+print(t1)
+print(k)
+print(T_opt)
 
 
 
