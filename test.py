@@ -139,6 +139,7 @@ def optimized_tax_revenue(x):
 def taxopt() 
 
 
+
 Guess = [0.2,0.3,0.4]
 
 solution = optimize.minimize(optimized_tax_revenue,Guess,method='SLSQP',bounds=((0,1),(0,1),(0,1))))

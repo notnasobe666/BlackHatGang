@@ -92,3 +92,5 @@ def total_tax_revenue(e,v,m,t0,t1,k,N):
 T = total_tax_revenue(e, v, m, t0, t1, k, N)
 print(T)
 
+
+
