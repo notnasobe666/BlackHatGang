@@ -53,7 +53,7 @@ print(u_star)
 # Question 2
 
 # A vector for w is created
-N       = 100
+N       = 10000
 w_vec   = np.random.uniform(0.5, 1.5, size=N)
 
 # empty lists for l and c is created
@@ -104,12 +104,12 @@ print(T_new)
 # Question 5
 
 # Define the negative of total tax revenue
-
+N_test = 100
 def optimized_tax_revenue(x):
     t0  = x[0]
     t1  = x[1]
     k   = x[2]
-    return -total_tax_revenue(e,v,m,t0,t1,k,N)
+    return -total_tax_revenue(e,v,m,t0,t1,k,N_test)
 
 
 guess   = [0.1,0.1,0.1]
@@ -119,7 +119,7 @@ tax_solution = optimize.minimize(optimized_tax_revenue,guess,\
 t0      = tax_solution.x[0]
 t1      = tax_solution.x[1]
 k       = tax_solution.x[2]
-T_opt   = total_tax_revenue(e,v,m,t0,t1,k,N)
+T_opt   = total_tax_revenue(e,v,m,t0,t1,k,N_test)
 
 print(t0)
 print(t1)
