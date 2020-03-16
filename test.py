@@ -119,10 +119,10 @@ for i, w in enumerate(w_vec):
 
 # then the new tax revenue can be calculated
 tax_revenue_e_new = np.sum(t0*w_vec*l_opt_e_new + t1*np.max(w_vec*l_opt_e_new-k,0))
-print(f'New total tax revenue: {tax_revenue_e_new:.2f})
+print(f'New total tax revenue: {tax_revenue_e_new:.2f}')
 
 # Thus the difference in tax revenue can be calucalted as
-print(f'The difference in tax revenue is: {tax_revenue_e_new-tax_revenue:.2f})
+print(f'The difference in tax revenue is: {tax_revenue_e_new-tax_revenue:.2f}')
 
 
 # Question 5
