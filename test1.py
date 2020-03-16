@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import math
 
 # autoreload modules when code is run
-%load_ext autoreload
-%autoreload 2
+#load_ext autoreload
+#autoreload 2
 
 # Question 1
 
