@@ -125,6 +125,3 @@ print(t0)
 print(t1)
 print(k)
 print(T_opt)
-
-
-
