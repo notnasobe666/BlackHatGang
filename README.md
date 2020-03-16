@@ -16,4 +16,5 @@ We now change the Frisch elasticity of labor supply from 0.3 to 0.1 and print th
 
 Question 5
 
+To maximize the total tax revenue we define a vector that maximizes tax revenue, by finding new levels of $\tau_0$, $\tau_1$ & $\kappa$. 
 Conclusion
