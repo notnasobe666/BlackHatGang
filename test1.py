@@ -18,6 +18,7 @@ e   = 0.3
 t0  = 0.4
 t1  = 0.1
 k   = 0.4
+w   = 0.5
 
 # Now the model equations are defined
 
