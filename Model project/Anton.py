@@ -20,7 +20,7 @@ import yfinance as yf
 # Time period and stocks: 
 start_date = datetime.datetime(2010,1,1)
 end_date = datetime.datetime(2020,1,1)
-sym = ["RICK","WEED","AVAV", "RACE"]
+sym = ["RICK","PM","AVAV", "RACE","LVS","CGC"]
 
 # get data as dataframe:
 yf.pdr_override() 
@@ -32,7 +32,7 @@ data.iloc[np.r_[0:2, -2:0]]
 # Calculate log daily returns
 
 log_daily_return = np.log(data / data.shift(1))
-log_daily_return.head(5)
+log_daily_return.iloc[np.r_[0:2, -2:0]]
 
 # log returns to avoid compound effect
 
@@ -45,3 +45,8 @@ for c in log_daily_return.columns.values:
     plt.plot(log_daily_return.index, log_daily_return[c], lw=3, alpha=0.8, label=c)
 plt.legend(loc='upper night', fontsize=12)
 plt.ylabel('daily returns')
+
+
+
+###############################################################
+
