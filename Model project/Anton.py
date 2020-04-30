@@ -18,6 +18,7 @@ import yfinance as yf
 ################################################################
 
 # Expected return = Beta * (Market risk premium)
+# Market risk premium = Expected market return - risk free return
 
 # Time period and stocks: 
 start_date = datetime.datetime(2010,1,1)
