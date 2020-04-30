@@ -30,8 +30,8 @@ yf.pdr_override()
 data = pdr.get_data_yahoo(sym, start=start_date, end=end_date)["Adj Close"]
 data.iloc[np.r_[0:2, -2:0]]
 
-################################################################
 
+################################################################
 # Calculate log daily returns
 
 log_daily_return = np.log(data / data.shift(1))
@@ -39,7 +39,21 @@ log_daily_return.iloc[np.r_[0:2, -2:0]]
 
 # log returns to avoid compound effect
 
-###############################################################
+################################################################
+
+# stock performance
+# evt kombinér stock performance + daily returns 
+
+Performance = log_daily_return.cumsum()
+
+plt.figure(figsize=(14, 7))
+for x in log_daily_return.columns.values:
+    plt.plot(log_daily_return.index, Performance[x], lw=1, alpha=1, label=x)
+plt.legend(fontsize=12)
+plt.ylabel('Cumulative return')
+
+
+################################################################
 
 # plot log_daily_returns
 
@@ -49,7 +63,7 @@ for c in log_daily_return.columns.values:
 plt.legend(loc='upper night', fontsize=12)
 plt.ylabel('daily returns')
 
-###############################################################
+################################################################
 
 yearly_trading_days = 253
 
@@ -63,6 +77,11 @@ CovMatrix = log_daily_return.cov() * yearly_trading_days
 CovMatrix['Mean'] = Avg_return
 CovMatrix['Mean'] = pd.Series(["{0:.2f}%".format(val*100) for val in CovMatrix['Mean']],index = CovMatrix.index)
 CovMatrix
+
+################################################################
+
+
+
 
 
 
