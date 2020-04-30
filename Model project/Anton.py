@@ -51,5 +51,14 @@ plt.ylabel('daily returns')
 
 ###############################################################
 
-CovMatrix = log_daily_return.cov()
+yearly_trading_days = 253
+
+# Mean returns, YoY
+
+Avg_return = {f'log_daily_return.mean() * yearly_trading_days',%}
+Avg_return
+
+# Covariance Matrix
+
+CovMatrix = log_daily_return.cov() * yearly_trading_days
 CovMatrix
