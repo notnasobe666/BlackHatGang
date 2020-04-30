@@ -26,3 +26,5 @@ sym = ["AAPL","MSFT","GOOG"]
 yf.pdr_override() 
 data = pdr.get_data_yahoo(sym, start=start_date, end=end_date)
 data["Adj Close"].head(5)
+
+
