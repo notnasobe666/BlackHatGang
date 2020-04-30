@@ -15,16 +15,14 @@ import scipy.interpolate as sci
 from pandas_datareader import data as pdr
 import yfinance as yf
 
-# msft = yf.Ticker("msft")
-# hist = msft.history(start=start_date, end=end_date)
-# print(hist["Close"])
+################################################################
 
+# Time period and stocks: 
 start_date = datetime.datetime(2010,1,1)
 end_date = datetime.datetime(2020,1,1)
 sym = ["AAPL","MSFT","GOOG"]
 
-yf.pdr_override() # <== that's all it takes :-)
-
-# download dataframe
+# get data as dataframe:
+yf.pdr_override() 
 data = pdr.get_data_yahoo(sym, start=start_date, end=end_date)
 data["Adj Close"].head(5)
