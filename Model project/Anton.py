@@ -24,7 +24,9 @@ sym = ["AAPL","MSFT","GOOG","AVAV"]
 
 # get data as dataframe:
 yf.pdr_override() 
-data = pdr.get_data_yahoo(sym, start=start_date, end=end_date)
-data["Adj Close"].head(5)
+data = pdr.get_data_yahoo(sym, start=start_date, end=end_date)["Adj Close"]
+data.iloc[np.r_[0:2, -2:0]]
+
+
 
 
