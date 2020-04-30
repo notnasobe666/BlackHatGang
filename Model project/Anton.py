@@ -20,7 +20,7 @@ import yfinance as yf
 # Time period and stocks: 
 start_date = datetime.datetime(2010,1,1)
 end_date = datetime.datetime(2020,1,1)
-sym = ["AAPL","MSFT","GOOG"]
+sym = ["AAPL","MSFT","GOOG","AVAV"]
 
 # get data as dataframe:
 yf.pdr_override() 
