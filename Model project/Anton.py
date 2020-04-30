@@ -44,13 +44,14 @@ log_daily_return.iloc[np.r_[0:2, -2:0]]
 # stock performance
 # evt kombinér stock performance + daily returns 
 
-Performance = log_daily_return.cumsum()
+Performance = log_daily_return.cumsum() * 100
+Performance.head()
 
 plt.figure(figsize=(14, 7))
 for x in log_daily_return.columns.values:
     plt.plot(log_daily_return.index, Performance[x], lw=1, alpha=1, label=x)
 plt.legend(fontsize=12)
-plt.ylabel('Cumulative return')
+plt.ylabel('Cumulative return, in %')
 
 
 ################################################################
