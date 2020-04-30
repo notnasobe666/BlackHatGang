@@ -51,3 +51,5 @@ plt.ylabel('daily returns')
 
 ###############################################################
 
+CovMatrix = log_daily_return.cov()
+CovMatrix
