@@ -45,7 +45,8 @@ log_daily_return.iloc[np.r_[0:2, -2:0]]
 # evt kombinér stock performance + daily returns 
 
 Performance = log_daily_return.cumsum() * 100
-Performance.head()
+Performance.iloc[np.r_[0:2, -2:0]]
+
 
 plt.figure(figsize=(14, 7))
 for x in log_daily_return.columns.values:
@@ -62,7 +63,7 @@ plt.figure(figsize=(14, 7))
 for c in log_daily_return.columns.values:
     plt.plot(log_daily_return.index, log_daily_return[c],lw=1, alpha=1, label=c)
 plt.legend(loc='upper night', fontsize=12)
-plt.ylabel('daily returns')
+plt.ylabel('Daily returns')
 
 ################################################################
 
@@ -81,6 +82,13 @@ CovMatrix
 
 ################################################################
 
+# Minimum variance portfolio
+
+# 1) Invert the Cov Matrix
+
+CovMatrix_old = pd.DataFrame(CovMatrix, columns=sym)
+Inverted = pd.DataFrame(np.linalg.inv(CovMatrix_old))
+Inverted
 
 
 
