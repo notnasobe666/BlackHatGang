@@ -82,7 +82,7 @@ CovMatrix
 
 ################################################################
 
-# Minimum variance portfolio
+# Minimum variance portfolio - only for check, not an algo
 
 # 1) Invert the Cov Matrix
 
@@ -93,7 +93,7 @@ Inverted
 Min_weights = pd.DataFrame([1,1,1,1,1,1,1,1])
 
 x = Inverted.dot(Min_weights)
-x['Portfolio weights'] = x / x.sum() * 100
+x['Min. var. port weights'] = x / x.sum() * 100
 x 
 
 
