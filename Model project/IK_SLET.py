@@ -93,8 +93,7 @@ Inverted
 Min_weights = pd.DataFrame([1,1,1,1,1,1,1,1])
 
 x = Inverted.dot(Min_weights)
-x['test'] = x / x.sum() * 100
+x['Portfolio weights'] = x / x.sum() * 100
 x 
-x['test'].sum()
 
 
