@@ -89,11 +89,13 @@ CovMatrix
 CovMatrix_old = pd.DataFrame(CovMatrix, columns=sym)
 Inverted = pd.DataFrame(np.linalg.inv(CovMatrix_old))
 Inverted
-
+# 2) indsæt lige vægte (1 taller)
 Min_weights = pd.DataFrame([1,1,1,1,1,1,1,1])
 
+# 3) =MMULT()  python version + printer vægte
 x = Inverted.dot(Min_weights)
 x['Min. var. port weights'] = x / x.sum() * 100
 x 
 
+################################################################
 
