@@ -62,7 +62,7 @@ plt.ylabel('Cumulative return, in %')
 plt.figure(figsize=(14, 7))
 for c in log_daily_return.columns.values:
     plt.plot(log_daily_return.index, log_daily_return[c],lw=1, alpha=1, label=c)
-plt.legend(loc='upper night', fontsize=12)
+plt.legend(fontsize=12)
 plt.ylabel('Daily returns')
 
 ################################################################
@@ -90,6 +90,7 @@ CovMatrix_old = pd.DataFrame(CovMatrix, columns=sym)
 Inverted = pd.DataFrame(np.linalg.inv(CovMatrix_old))
 Inverted
 
+df = pd.DataFrame(
 
 
 
