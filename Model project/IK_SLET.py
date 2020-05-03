@@ -99,3 +99,5 @@ x
 
 ################################################################
 
+# Define return, std. dev & Sharp ratio for portolio - also create random weights
+
