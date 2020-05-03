@@ -11,6 +11,8 @@ import statsmodels.api as sm
 import scipy.interpolate as sci
 from pandas_datareader import data as pdr
 import yfinance as yf
+import seaborn as sns
+
 
 start_date = datetime.datetime(2010,1,1)
 end_date = datetime.datetime(2020,1,1)
@@ -47,7 +49,7 @@ def portfolio_annualised_performance(weights, mean_returns, cov_matrix):
 def random_portfolios(num_portfolios, mean_returns, cov_matrix, risk_free_rate):
     results = np.zeros((3,num_portfolios))
     weights_record = []
-    for i in xrange(num_portfolios):
+    for i in range(num_portfolios):
         weights = np.random.random(4)
         weights /= np.sum(weights)
         weights_record.append(weights)
@@ -66,17 +68,29 @@ risk_free_rate = 0.00618
 def display_simulated_ef_with_random(mean_returns, cov_matrix, num_portfolios, risk_free_rate):
     results, weights = random_portfolios(num_portfolios,mean_returns, cov_matrix, risk_free_rate)
     
+    max_sharpe_idx = np.argmax(results[2])
+    sdp, rp = results[0,max_sharpe_idx], results[1,max_sharpe_idx]
+    max_sharpe_allocation = pd.DataFrame(weights[max_sharpe_idx],index=table.columns,columns=['allocation'])
+    max_sharpe_allocation.allocation = [round(i*100,2)for i in max_sharpe_allocation.allocation]
+    max_sharpe_allocation = max_sharpe_allocation.T
+    
     min_vol_idx = np.argmin(results[0])
     sdp_min, rp_min = results[0,min_vol_idx], results[1,min_vol_idx]
     min_vol_allocation = pd.DataFrame(weights[min_vol_idx],index=table.columns,columns=['allocation'])
     min_vol_allocation.allocation = [round(i*100,2)for i in min_vol_allocation.allocation]
     min_vol_allocation = min_vol_allocation.T
     
+    print("Maximum Sharpe Ratio Portfolio Allocation\n")
+    print("Annualised Return:", round(rp,2))
+    print("Annualised Volatility:", round(sdp,2))
+    print("\n")
+    print(max_sharpe_allocation)
     print("Minimum Volatility Portfolio Allocation\n")
     print("Annualised Return:", round(rp_min,2))
     print("Annualised Volatility:", round(sdp_min,2))
     print("\n")
     print(min_vol_allocation)
+
 
 display_simulated_ef_with_random(mean_returns, cov_matrix, num_portfolios, risk_free_rate)
 
