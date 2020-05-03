@@ -15,6 +15,8 @@ import scipy.interpolate as sci
 from pandas_datareader import data as pdr
 import yfinance as yf
 
+np.random.seed(666)
+
 ################################################################
 
 # Expected return = Beta * (Market risk premium)
@@ -101,3 +103,9 @@ x
 
 # Define return, std. dev & Sharp ratio for portolio - also create random weights
 
+# weights first 
+Countticker = len(sym)
+weights = np.random.random(Countticker)
+weights /= np.sum(weights)
+weights
+weights.sum()
