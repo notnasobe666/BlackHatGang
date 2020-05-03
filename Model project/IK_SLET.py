@@ -99,3 +99,51 @@ x
 
 ################################################################
 
+# test from tds 
+CovMatrix_old
+
+returns = log_daily_return
+mean_returns = returns.mean()
+cov_matrix = returns.cov()
+num_portfolios = 10000
+risk_free_rate = 0.00618
+
+def display_simulated_ef_with_random(mean_returns, cov_matrix, num_portfolios, risk_free_rate):
+    results, weights = random_portfolios(num_portfolios,mean_returns, cov_matrix, risk_free_rate)
+    
+    max_sharpe_idx = np.argmax(results[2])
+    sdp, rp = results[0,max_sharpe_idx], results[1,max_sharpe_idx]
+    max_sharpe_allocation = pd.DataFrame(weights[max_sharpe_idx],index=table.columns,columns=['allocation'])
+    max_sharpe_allocation.allocation = [round(i*100,2)for i in max_sharpe_allocation.allocation]
+    max_sharpe_allocation = max_sharpe_allocation.T
+    
+    min_vol_idx = np.argmin(results[0])
+    sdp_min, rp_min = results[0,min_vol_idx], results[1,min_vol_idx]
+    min_vol_allocation = pd.DataFrame(weights[min_vol_idx],index=table.columns,columns=['allocation'])
+    min_vol_allocation.allocation = [round(i*100,2)for i in min_vol_allocation.allocation]
+    min_vol_allocation = min_vol_allocation.T
+    
+    print("Maximum Sharpe Ratio Portfolio Allocation\n")
+    print("Annualised Return:", round(rp,2))
+    print("Annualised Volatility:", round(sdp,2))
+    print("\n")
+    print(max_sharpe_allocation)
+    print("Minimum Volatility Portfolio Allocation\n")
+    print("Annualised Return:", round(rp_min,2))
+    print("Annualised Volatility:", round(sdp_min,2))
+    print("\n")
+    print(min_vol_allocation)
+    
+    plt.figure(figsize=(10, 7))
+    plt.scatter(results[0,:],results[1,:],c=results[2,:],cmap='YlGnBu', marker='o', s=10, alpha=0.3)
+    plt.colorbar()
+    plt.scatter(sdp,rp,marker='*',color='r',s=500, label='Maximum Sharpe ratio')
+    plt.scatter(sdp_min,rp_min,marker='*',color='g',s=500, label='Minimum volatility')
+    plt.title('Simulated Portfolio Optimization based on Efficient Frontier')
+    plt.xlabel('annualised volatility')
+    plt.ylabel('annualised returns')
+    plt.legend(labelspacing=0.8)
+
+################################################################
+
+
