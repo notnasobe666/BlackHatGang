@@ -108,6 +108,25 @@ cov_matrix = returns.cov()
 num_portfolios = 10000
 risk_free_rate = 0.00618
 
+def portfolio_annualised_performance(weights, mean_returns, cov_matrix):
+    returns = np.sum(mean_returns*weights ) *252
+    std = np.sqrt(np.dot(weights.T, np.dot(cov_matrix, weights))) * np.sqrt(252)
+    return std, returns
+
+def random_portfolios(num_portfolios, mean_returns, cov_matrix, risk_free_rate):
+    results = np.zeros((3,num_portfolios))
+    weights_record = []
+    for i in xrange(num_portfolios):
+        weights = np.random.random(4)
+        weights /= np.sum(weights)
+        weights_record.append(weights)
+        portfolio_std_dev, portfolio_return = portfolio_annualised_performance(weights, mean_returns, cov_matrix)
+        results[0,i] = portfolio_std_dev
+        results[1,i] = portfolio_return
+        results[2,i] = (portfolio_return - risk_free_rate) / portfolio_std_dev
+    return results, weights_record
+
+
 def display_simulated_ef_with_random(mean_returns, cov_matrix, num_portfolios, risk_free_rate):
     results, weights = random_portfolios(num_portfolios,mean_returns, cov_matrix, risk_free_rate)
     
@@ -144,6 +163,7 @@ def display_simulated_ef_with_random(mean_returns, cov_matrix, num_portfolios, r
     plt.ylabel('annualised returns')
     plt.legend(labelspacing=0.8)
 
+display_simulated_ef_with_random(mean_returns, cov_matrix, num_portfolios, risk_free_rate)
 ################################################################
 
 
