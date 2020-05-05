@@ -73,7 +73,11 @@ yearly_trading_days = 253
 
 # Mean returns, YoY
 
-Avg_return = log_daily_return.mean() * yearly_trading_days
+AY_return = log_daily_return.mean() * yearly_trading_days
+Avg_yearly_return = pd.DataFrame()
+Avg_yearly_return["Avg. annual return"] = AY_return 
+Avg_yearly_return["Avg. annual return"] = pd.Series(["{0:.2f}%".format(val*100) for val in Avg_yearly_return['Avg. annual return']],index = Avg_yearly_return.index)
+Avg_yearly_return
 
 # Covariance Matrix with mean return
 
