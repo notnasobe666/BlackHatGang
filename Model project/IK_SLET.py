@@ -32,6 +32,8 @@ yf.pdr_override()
 data = pdr.get_data_yahoo(sym, start=start_date, end=end_date)["Adj Close"]
 data.iloc[np.r_[0:2, -2:0]]
 
+risk_free_rate = pdr.get_data_yahoo("^TNX",start='2020-01-01',end='2020-01-01')["Adj Close"]
+risk_free_rate
 
 ################################################################
 # Calculate log daily returns
@@ -111,3 +113,17 @@ weights = np.random.random(Countticker)
 weights /= np.sum(weights)
 weights
 weights.sum()
+
+# then defining portfolio function
+
+def portfolio(weights): 
+    weights = np.array(weights)
+    Portfolio_return = np.sum(log_daily_return.mean() * weights) * yearly_trading_days 
+    Portfolio_risk = np.sqrt(np.dot(weights.T, np.dot(log_daily_return.cov()*yearly_trading_days, weights)))
+    return np.array([Portfolio_return,Portfolio_risk, Portfolio_return / Portfolio_risk])
+
+# then a function for the min. variance portfolio can be defined
+
+def min_var_portfolio(weights):
+    return -portfolio(weights)[2]
+
