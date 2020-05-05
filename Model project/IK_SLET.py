@@ -82,8 +82,6 @@ Avg_yearly_return
 # Covariance Matrix with mean return
 
 CovMatrix = log_daily_return.cov() * yearly_trading_days
-CovMatrix['Mean'] = Avg_return
-CovMatrix['Mean'] = pd.Series(["{0:.2f}%".format(val*100) for val in CovMatrix['Mean']],index = CovMatrix.index)
 CovMatrix
 
 ################################################################
