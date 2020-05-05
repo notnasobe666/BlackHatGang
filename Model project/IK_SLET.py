@@ -127,3 +127,4 @@ def portfolio(weights):
 def min_var_portfolio(weights):
     return -portfolio(weights)[2]
 
+
