@@ -90,5 +90,10 @@ plt.show()
 
 # Question 3
 
-theta = np.ones(X.shape[1])
+from scipy.minimize import minimize_scalar
 
+def f(x):
+    return (y - (beta_0 + beta_1*x1 + beta_2*x2))**2
+
+res = minimize_scalar(f)
+res.x
