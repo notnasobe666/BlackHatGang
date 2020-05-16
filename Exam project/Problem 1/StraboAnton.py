@@ -48,7 +48,7 @@ X_trans
 
 X_trans_X = X_trans.dot(X)
 X_trans_X
-
+#
 Inv_X_X_trans = np.linalg.inv(X_trans_X)
 Inv_X_X_trans
 
@@ -88,17 +88,15 @@ plt.show()
 
 #######################################################################################
 
-# Question 3
+## Question 3
 
 # præsenter i data frame
 
-beta_hat[0]
-
 from scipy.optimize import minimize
 
-b0 = np.empty()
-b1 = np.empty()
-b2 = np.empty()
+b0 = np.empty(1)
+b1 = np.empty(1)
+b2 = np.empty(1)
 
 def function(x, b0, b1, b2):
 
@@ -168,7 +166,7 @@ b1_OLS = np.empty(5000)
 b2_OLS = np.empty(5000)
 
 for k in range(5000):
-    new_x1, new_x2, new_y = DGP(50) # defining residuals
+    new_x1, new_x2, new_y = DGP(50) 
    
     def new_function(x, b0_OLS, b1_OLS, b2_OLS): 
         b0_OLS = x[0]
@@ -191,7 +189,7 @@ b1_LAD = np.empty(5000)
 b2_LAD = np.empty(5000)
 
 for k in range(5000):
-    new_x1, new_x2, new_y = DGP(50) # defining residuals
+    new_x1, new_x2, new_y = DGP(50) 
    
     def new_function(x, b0_LAD, b1_LAD, b2_LAD): 
         b0_LAD = x[0]
