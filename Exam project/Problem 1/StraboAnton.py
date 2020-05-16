@@ -68,6 +68,8 @@ betas
 
 # Lav stor fed 3D plot med beta vægte ganget på mulige forekomster af x1 og x2. 
 
+# Plane ind som Surface
+
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
@@ -87,4 +89,6 @@ plt.show()
 #######################################################################################
 
 # Question 3
+
+theta = np.ones(X.shape[1])
 
