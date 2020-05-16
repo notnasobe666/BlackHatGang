@@ -96,9 +96,9 @@ beta_hat[0]
 
 from scipy.optimize import minimize
 
-b0 = np.empty(1)
-b1 = np.empty(1)
-b2 = np.empty(1)
+b0 = np.empty()
+b1 = np.empty()
+b2 = np.empty()
 
 def function(x, b0, b1, b2):
 
@@ -132,9 +132,9 @@ beta_hat[0]
 
 from scipy.optimize import minimize
 
-b0 = np.empty(1)
-b1 = np.empty(1)
-b2 = np.empty(1)
+b0 = np.empty()
+b1 = np.empty()
+b2 = np.empty()
 
 def function(x, b0, b1, b2):
 
@@ -160,22 +160,61 @@ print(b0,b1,b2)
 
 #######################################################################################
 
-# Question 5.4
+# Question 5
  
-N = 50
-OLS = []
-LAD = []
+# OLS
+b0_OLS = np.empty(5000)
+b1_OLS = np.empty(5000)
+b2_OLS = np.empty(5000)
 
-for k in range (5000):
-    OLS.append(np.sum((y - (b0 + b1*x1 + b2*x2))**2))  
-    LAD.append(np.sum(np.absolute(y - (b0 + b1*x1 + b2*x2))))
+for k in range(5000):
+    new_x1, new_x2, new_y = DGP(50) # defining residuals
+   
+    def new_function(x, b0_OLS, b1_OLS, b2_OLS): 
+        b0_OLS = x[0]
+        b1_OLS = x[1]
+        b2_OLS = x[2]
 
-OLS
+        return np.sum((new_y- (b0_OLS +  b1_OLS*new_x1 + b2_OLS*new_x2))**2)
+    
+    new_est = minimize(new_function, b, args=(b0_OLS,b1_OLS,b2_OLS),method = 'SLSQP')
+    b0_OLS[k-1]=new_est.x[0]
+    b1_OLS[k-1]=new_est.x[1]
+    b2_OLS[k-1]=new_est.x[2]
 
-#array
-OLS = np.array(OLS)
-LAD = np.array(LAD)
+# OLS beta_0 print hist 
+OLS_b0_hist = plt.hist(b0_OLS,bins=50)
 
-plt.hist(OLS)
-plt.hist(LAD)
+OLS_b1_hist = plt.hist(b1_OLS,bins=50)
+
+OLS_b2_hist = plt.hist(b2_OLS,bins=50)
+
+
+# LAD
+b0_LAD = np.empty(5000)
+b1_LAD = np.empty(5000)
+b2_LAD = np.empty(5000)
+
+for k in range(5000):
+    new_x1, new_x2, new_y = DGP(50) # defining residuals
+   
+    def new_function(x, b0_LAD, b1_LAD, b2_LAD): 
+        b0_LAD = x[0]
+        b1_LAD = x[1]
+        b2_LAD = x[2]
+
+        return np.sum(np.absolute(new_y - (b0_LAD +  b1_LAD*new_x1 + b2_LAD*new_x2)))
+    
+    new_est = minimize(new_function, b, args=(b0_LAD,b1_LAD,b2_LAD),method = 'SLSQP')
+    b0_LAD[k-1]=new_est.x[0]
+    b1_LAD[k-1]=new_est.x[1]
+    b2_LAD[k-1]=new_est.x[2]
+
+# LAD beta_0 print hist 
+LAD_b0_hist = plt.hist(b0_LAD,bins=50)
+
+LAD_b1_hist = plt.hist(b1_LAD,bins=50)
+
+LAD_b2_hist = plt.hist(b2_LAD,bins=50)
+
 
