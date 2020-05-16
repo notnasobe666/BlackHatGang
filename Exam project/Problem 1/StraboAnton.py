@@ -90,10 +90,92 @@ plt.show()
 
 # Question 3
 
-from scipy.minimize import minimize_scalar
+# præsenter i data frame
 
-def f(x):
-    return (y - (beta_0 + beta_1*x1 + beta_2*x2))**2
+beta_hat[0]
 
-res = minimize_scalar(f)
-res.x
+from scipy.optimize import minimize
+
+b0 = np.empty(1)
+b1 = np.empty(1)
+b2 = np.empty(1)
+
+def function(x, b0, b1, b2):
+
+    b0 = x[0]
+    b1 = x[1]
+    b2 = x[2]
+
+    return np.sum((y - (b0 + b1*x1 + b2*x2))**2)
+
+
+#initial guess
+b = np.array([0.2, 1.5, 9.5])
+
+estimate = minimize(function, b, args=(b0,b1,b2), method='SLSQP')
+
+b0 = estimate.x[0]
+b1 = estimate.x[1]
+b2 = estimate.x[2]
+
+print(estimate.message)
+
+print(b0,b1,b2)
+
+#######################################################################################
+
+# Question 4
+
+# præsenter i data frame
+
+beta_hat[0]
+
+from scipy.optimize import minimize
+
+b0 = np.empty(1)
+b1 = np.empty(1)
+b2 = np.empty(1)
+
+def function(x, b0, b1, b2):
+
+    b0 = x[0]
+    b1 = x[1]
+    b2 = x[2]
+
+    return np.sum(np.absolute(y - (b0 + b1*x1 + b2*x2)))
+
+
+#initial guess
+h = np.array([0.4, 1.2, 10.5])
+
+estimate = minimize(function, h, args=(b0,b1,b2), method='SLSQP')
+
+b0 = estimate.x[0]
+b1 = estimate.x[1]
+b2 = estimate.x[2]
+
+print(estimate.message)
+
+print(b0,b1,b2)
+
+#######################################################################################
+
+# Question 5.4
+ 
+N = 50
+OLS = []
+LAD = []
+
+for k in range (5000):
+    OLS.append(np.sum((y - (b0 + b1*x1 + b2*x2))**2))  
+    LAD.append(np.sum(np.absolute(y - (b0 + b1*x1 + b2*x2))))
+
+OLS
+
+#array
+OLS = np.array(OLS)
+LAD = np.array(LAD)
+
+plt.hist(OLS)
+plt.hist(LAD)
+
