@@ -30,7 +30,7 @@ def DGP(N):
 np.random.seed(2020)
 x1,x2,y = DGP(10000)
 
-############################################################################
+#######################################################################################
 
 # To define X, x1 and x2 must be included in the same dataframe. Also a column of one's 
 # for Beta_0.
@@ -45,7 +45,20 @@ X
 
 X_trans = X.T
 X_trans
-Inv_X_X_trans = 
-y = 
-X_trans_y = 
-beta_hat = 
+
+X_trans_X = X_trans.dot(X)
+X_trans_X
+
+Inv_X_X_trans = np.linalg.inv(X_trans_X)
+Inv_X_X_trans
+
+
+X_trans_y = X_trans.dot(y)
+X_trans_y
+
+beta_hat = Inv_X_X_trans.dot(X_trans_y)
+betas = pd.DataFrame({'Beta 0':beta_hat,'Beta 1':beta_hat,'Beta 2':beta_hat})
+betas
+
+#######################################################################################
+
