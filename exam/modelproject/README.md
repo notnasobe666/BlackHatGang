@@ -4,7 +4,7 @@ Our project is titled **The optimal portfolio** and is about finding the optimal
 
 The **results** of the project can be seen from running [Final.ipynb](Final.ipynb).
 
-**Dependencies:** Apart from a standard Anaconda Python 3 installation, the project requires the Yahoo Finance package and Pandas Datareader package. They can be installed by inserting following:
+**Dependencies:** Apart from a standard Anaconda Python 3 installation, the project requires the Yahoo Finance package and Pandas Datareader package. They can be installed by inserting following:<br>
 ``pip install yfinance``
 ``pip install pandas-datareader``
 
