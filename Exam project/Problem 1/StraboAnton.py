@@ -182,12 +182,7 @@ for k in range(5000):
     b1_OLS[k-1]=new_est.x[1]
     b2_OLS[k-1]=new_est.x[2]
 
-# OLS beta_0 print hist 
-OLS_b0_hist = plt.hist(b0_OLS,bins=50)
 
-OLS_b1_hist = plt.hist(b1_OLS,bins=50)
-
-OLS_b2_hist = plt.hist(b2_OLS,bins=50)
 
 
 # LAD
@@ -210,11 +205,16 @@ for k in range(5000):
     b1_LAD[k-1]=new_est.x[1]
     b2_LAD[k-1]=new_est.x[2]
 
-# LAD beta_0 print hist 
+
+# OLS & LAD beta_0 print hist 
+OLS_b0_hist = plt.hist(b0_OLS,bins=50)
 LAD_b0_hist = plt.hist(b0_LAD,bins=50)
+plt.show(OLS_b0_hist,LAD_b0_hist)
 
+OLS_b1_hist = plt.hist(b1_OLS,bins=50)
 LAD_b1_hist = plt.hist(b1_LAD,bins=50)
+plt.show(OLS_b1_hist,LAD_b1_hist)
 
+OLS_b2_hist = plt.hist(b2_OLS,bins=50)
 LAD_b2_hist = plt.hist(b2_LAD,bins=50)
-
-
+plt.show(OLS_b2_hist,LAD_b2_hist)
