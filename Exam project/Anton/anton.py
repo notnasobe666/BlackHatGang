@@ -28,8 +28,20 @@ d0_vec = np.linspace(1e-8,3,100)
 
 ##############################################################################
 
+# Basic function
+
+def utility(c, d, alpha, rho):
+    return
+
+def
+
+
+
+
+
 # Question 1 - Find and plot the functions v2, c* and x*
 
 plt.plot(m1_vec)
 plt.plot(m2_vec)
 plt.plot(d_vec)
+
