@@ -84,7 +84,7 @@ ax.scatter(df_y_hat['x1'],df_y_hat['x2'],df_y_hat['y_hat'], c='pink',marker='o',
 ax.set_xlabel('x1')
 ax.set_ylabel('x2')
 ax.set_zlabel('y3')
-plt.show()
+plt.show
 
 #######################################################################################
 
@@ -130,9 +130,9 @@ beta_hat[0]
 
 from scipy.optimize import minimize
 
-b0 = np.empty()
-b1 = np.empty()
-b2 = np.empty()
+b0 = np.empty(1)
+b1 = np.empty(1)
+b2 = np.empty(1)
 
 def function(x, b0, b1, b2):
 
