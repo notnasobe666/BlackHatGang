@@ -4,6 +4,9 @@
 
 #packages
 import numpy as np 
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import pandas as pd
 
 # import from exam description
 
@@ -27,3 +30,6 @@ d0_vec = np.linspace(1e-8,3,100)
 
 # Question 1 - Find and plot the functions v2, c* and x*
 
+plt.plot(m1_vec)
+plt.plot(m2_vec)
+plt.plot(d_vec)
